@@ -1,0 +1,27 @@
+nav {
+  background-color: $main-color;
+  box-shadow: 0 25px 55px darken($main-color, 10%);
+} .nav-title {
+  font-family: $special-font;
+  font-size: 3rem;
+  color: $second-main-color;
+    &:hover {
+      color: $additional-color;
+    }
+  } .nav-link{
+        color: $second-main-color;
+        font-size: 1.5rem;
+        &:hover {
+          color: $additional-color;
+        }
+       }.uc-nav {
+          font-size: 45px;
+          } .logo-nav {
+               height: 50px;
+               width: 50px;
+              }
+
+.navbar-toggler-icon {
+  border-radius: 50%;
+  background-color: #868686;
+}
