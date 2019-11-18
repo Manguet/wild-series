@@ -38,53 +38,79 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/show/{slug}",
-     *      requirements={"slug"="^[a-z0-9]+(?:-[a-z0-9]+)*$"},
-     *      name="show")
-     * @param string $slug
-     * @return Response
-     */
-    public function show(string $slug = ''): Response
-    {
-        if ($slug === '') {
-            $title = 'Aucune série sélectionnée, veuillez choisir une série';
-        } else {
-            $title = ucwords(str_replace('-', ' ', $slug));
-        }
-        return $this->render('wild/show.html.twig', ['title' => $title]);
-    }
-
-    /**
-     * Show 3 programs by id
+     * Getting a program with a formatted slug for title
      *
-     * @param string $categoryName
-     * @Route("/category/{category}", name="show_category")
+     * @param string $slug The slugger
+     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
      * @return Response
      */
-    public function showByCategory(string $categoryName):Response
+    public function show(string $slug):Response
     {
-        if (!$categoryName) {
+        if (!$slug) {
             throw $this
                 ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
         }
+        $slug = preg_replace(
+            '/-/',
+            ' ', ucwords(trim(strip_tags($slug)), "-")
+        );
 
-        $programs = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findBy([
-                'name' => 'Horror',
-                'id'   => 'DESC',
-                3
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy([
+                'title' => mb_strtolower($slug)
             ]);
 
-        if (!$programs ) {
+        if (!$program) {
             throw $this->createNotFoundException(
-                'No programs with ' . $categoryName . 'category in program\'s table.'
+                'No program with '.$slug.' title, found in program\'s table.'
             );
         }
 
+        return $this->render('wild/show.html.twig', [
+            'program' => $program,
+            'slug'    => $slug,
+        ]);
+    }
+
+    /**
+     * 3 last programs in category
+     *
+     * @param string|null $categoryName
+     * @return Response
+     * @Route("/category/{categoryName<^[a-z0-9-]+$>}", defaults={"categoryName" = null}, name="show_category")
+     */
+    public function showByCategory(?string $categoryName):Response
+    {
+        if (!$categoryName) {
+            throw $this
+                ->createNotFoundException('No category has been find in categorie\'s table.');
+        }
+        $categoryName = preg_replace(
+            '/-/',
+            ' ', ucwords(trim(strip_tags($categoryName)), "-")
+        );
+
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy([
+                'name' => mb_strtolower($categoryName),
+            ]);
+
+        $programs = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findBy(
+                ['category' => $category],
+                ['id'       => 'DESC'],
+                3);
+
+        if (!$programs) {
+            throw $this->createNotFoundException(
+                'No program with '.$categoryName.' category, found in Program\'s table.'
+            );
+        }
         return $this->render('wild/category.html.twig', [
             'programs' => $programs,
         ]);
     }
-
 }
