@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ slug }}{% endblock %}
+
+{% block body %}
+{{ dump(programs) }}
+
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}
