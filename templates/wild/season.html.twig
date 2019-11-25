@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Season{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+
+    <div class="block-main text-center">
+        <h1>Saison {{ season.id }} de {{ program.title }} </h1>
+        <p>{{ season.description }}</p>
+        <div class="container">
+            <p>Liste des épisodes:</p>
+            <ul>
+                {% for episode in episodes  %}
+                    <li>Episode {{ episode.number }}: {{ episode.title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}

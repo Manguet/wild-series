@@ -1,3 +1,42 @@
 body{
+  background-image: url("../images/wallpaper.jpg");
+  background-size: cover;
+  font-family: $text-font;
+  font-size: 1.2rem;
+} .block-main {
   margin-top: 15vh;
+  } h1 {
+      font-family: $title-font;
+      font-size: 5rem;
+      color: $second-main-color;
+      text-shadow: 5px 5px 3px $second-additional-color;
+      }
+
+@keyframes hoverAnim {
+  0%   {text-shadow: 5px 5px 2px $second-main-color;}
+  35%  {text-shadow: 5px 5px 2px $additional-color;}
+  100% {text-shadow: 5px 5px 2px $second-additional-color;}
 }
+
+@mixin animationShadow {
+  animation-name: hoverAnim;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@mixin animationDoors {
+  height: 100%;
+  width: 50%;
+  background-color: $second-additional-color;
+  z-index: 1;
+}
+
+@mixin animationButton {
+
+}
+
+
+

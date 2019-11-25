@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Program;
+use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,7 +45,7 @@ class WildController extends AbstractController
      * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
      * @return Response
      */
-    public function show(string $slug):Response
+    public function showByProgram(string $slug):Response
     {
         if (!$slug) {
             throw $this
@@ -67,9 +68,16 @@ class WildController extends AbstractController
             );
         }
 
+        $seasons = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findBy([
+                'program' => $program,
+            ]);
+
         return $this->render('wild/show.html.twig', [
             'program' => $program,
             'slug'    => $slug,
+            'seasons' => $seasons,
         ]);
     }
 
@@ -113,4 +121,39 @@ class WildController extends AbstractController
             'programs' => $programs,
         ]);
     }
+
+    /**
+     * seasons from a program
+     *
+     * @param int $id
+     * @return Response
+     * @Route("/season/{id<^[0-9-]+$>}", defaults={"id" = null}, name="season")
+     */
+    public function showBySeason(int $id) : Response
+    {
+        if (!$id) {
+            throw $this
+                ->createNotFoundException('No season has been find in season\'s table.');
+        }
+
+        $season = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->find($id);
+
+        $program = $season->getProgram();
+        $episodes = $season->getEpisodes();
+
+        if (!$season) {
+            throw $this->createNotFoundException(
+                'No season with '.$id.' season, found in Season\'s table.'
+            );
+        }
+
+        return $this->render('wild/season.html.twig', [
+            'season'   => $season,
+            'program'  => $program,
+            'episodes' => $episodes,
+        ]);
+    }
+
 }

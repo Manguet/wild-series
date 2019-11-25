@@ -1,0 +1,27 @@
+.doors {
+  height: 100vh;
+  width: 100vw;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+} .left-door {
+  @include animationDoors;
+  }
+  .right-door {
+    @include animationDoors;
+  }
+
+.full-screen {
+  height: 85vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+}  .is-close {
+    position: absolute;
+    top: 47vh;
+    left: 45vw;
+    z-index: 10;
+    font-size: 2rem;
+    font-family: $special-font;
+   }
+
