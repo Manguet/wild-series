@@ -1,26 +1,21 @@
 nav {
-  opacity: 0.5;
   background-color: $main-color;
   box-shadow: 0 25px 55px darken($main-color, 10%);
 } .nav-title {
-  opacity: 1;
   font-family: $special-font;
   font-size: 3rem;
   color: $second-main-color;
     &:hover {
-      opacity: 1;
       color: darken($second-additional-color, 10%);
       @include animationShadow;
     }
-  } .nav-link{
-        opacity: 1;
+  }  .nav-link{
         color: $second-main-color;
         font-size: 2rem;
         font-family: $special-font;
         &:hover {
           color: $second-additional-color;
           @include animationShadow;
-          opacity: 1;
         }
        }.uc-nav {
           font-size: 45px;

@@ -2,6 +2,7 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
+    {% include "Base/navbar.html.twig" %}
     <div class="media block-main d-flex flex-column">
         {% for program in programs %}
             <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">

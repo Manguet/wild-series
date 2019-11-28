@@ -5,9 +5,11 @@
   position: absolute;
   top: 0;
 } .left-door {
+  background-image: url("../images/left.png");
   @include animationDoors;
   }
   .right-door {
+    background-image: url("../images/right.png");
     @include animationDoors;
   }
 
@@ -25,3 +27,20 @@
     font-family: $special-font;
    }
 
+.disapear{
+  display: none;
+}
+
+.openl{
+  transform: translateX(-50vw);
+  transition-duration: 3s;
+}
+.openr{
+  transform: translateX(50vw);
+  transition-duration: 3s;
+}
+
+.byebye{
+  transform: translateY(-100vh);
+  transition-delay: 3s;
+}

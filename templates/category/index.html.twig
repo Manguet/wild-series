@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1 class="text-center">Liste des catégories:</h1>
+        <div class="font-bg container">
+            <ul>
+            {% for category in categories %}
+                <li class="d-flex justify-content-between">
+                    {{ category.name }} - <a href="{{ path('wild_show_category', { 'categoryName': category.name }) }}">Les trois derniers programmes</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+            <h2 class="text-center">Ajouter une catégorie</h2>
+            <div class="form-group text-center">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                <button class="btn btn-primary" type="submit" name="btnAdd">Ajouter</button>
+                {{ form_end(form) }}
+            </div>
+    </div>
+{% endblock %}

@@ -6,7 +6,9 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\ProgramSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,9 +21,10 @@ class WildController extends AbstractController
      * Show all rows from Program’s entity
      *
      * @Route("/", name="index")
+     * @param Request $request
      * @return Response A response instance
      */
-    public function index() :Response
+    public function index(Request $request) :Response
     {
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
@@ -33,9 +36,40 @@ class WildController extends AbstractController
             );
         }
 
+        $form = $this->createForm(
+            ProgramSearchType::class,
+            null,
+            ['method' => Request::METHOD_GET]
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+            $program = $this->getDoctrine()
+                ->getRepository(Program::class)
+                ->findOneBy([
+                    'title' => $data,
+                ]);
+            $seasons = $this->getDoctrine()
+                ->getRepository(Season::class)
+                ->findBy([
+                    'program' => $program,
+                ]);
+
+            return $this->render(
+                'wild/show.html.twig', [
+                    'program' => $program,
+                    'seasons' => $seasons,
+                ]
+            );
+        }
+
         return $this->render(
-            'wild/index.html.twig',
-            ['programs' => $programs]
+            'wild/index.html.twig', [
+                'programs' => $programs,
+                'form'     => $form->createView(),
+                ]
         );
     }
 
@@ -44,7 +78,7 @@ class WildController extends AbstractController
      * Getting a program with a formatted slug for title
      *
      * @param string $slug The slugger
-     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
+     * @Route("/show/{slug<^[ a-zA-Z0-9-é]+$>}", defaults={"slug" = null}, name="show")
      * @return Response
      */
     public function showByProgram(string $slug):Response
@@ -88,7 +122,7 @@ class WildController extends AbstractController
      *
      * @param string|null $categoryName
      * @return Response
-     * @Route("/category/{categoryName<^[a-z0-9-]+$>}", defaults={"categoryName" = null}, name="show_category")
+     * @Route("/category/{categoryName<^[ a-z0-9-é]+$>}", defaults={"categoryName" = null}, name="show_category")
      */
     public function showByCategory(?string $categoryName):Response
     {
