@@ -15,5 +15,11 @@ require('bootstrap');
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 // Functions
-const yep = document.getElementById('testeur');
-yep.style.backgroundColor = "red";
+document.getElementById("entry").onclick = function () {
+    document.getElementById("dleft").classList.toggle("openl");
+    document.getElementById("dright").classList.toggle("openr");
+    document.getElementById("entry").classList.toggle("disapear");
+    document.getElementById("fulldoors").classList.toggle("byebye")
+};
+
+

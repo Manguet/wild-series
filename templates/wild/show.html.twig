@@ -1,18 +1,22 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ slug }}{% endblock %}
+{% block title %}Program{% endblock %}
 
 {% block body %}
-
+    {% include "Base/navbar.html.twig" %}
     <div class="media block-main">
-        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-        <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
-            <p>{{ program.summary }}</p>
-            <p>Categorie : {{ program.category.name }}</p>
-            {% for season in seasons %}
-                <a href="{{ path('wild_season', {'id' : season.id}) }}">Saison : {{ season.id }}</a>
-                <br/>
-            {% endfor %}
+        {% if program.title is defined %}
+            <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+            <div class="media-body">
+                <h1 class="mt-0">{{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+                <p>Categorie : {{ program.category.name }}</p>
+                {% for season in seasons %}
+                    <a href="{{ path('wild_season', {'id' : season.id}) }}">Saison : {{ season.id }} </a>
+                    <br/>
+                {% endfor %}
+        {% else %}
+                <p>Aucun Program correspondant à votre recherche</p>
+        {% endif %}
         </div>
     </div>
 

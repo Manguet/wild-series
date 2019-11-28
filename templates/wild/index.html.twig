@@ -4,16 +4,28 @@
 
 {% block body %}
     {% include "Base/navbar.html.twig" %}
-    <h1 class="text-center block-main">Toutes les séries de la table program : </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
+
+    <div class="block-main">
+        <div class="form-group text-center">
+            <i class="fa fa-calendar"></i>{{ form_start(form) }}
+            {{ form_row(form.searchField) }}
+                <button class="btn btn-primary" type="submit" name="btnSearch">Rechercher</button>
+            {{ form_end(form) }}
         </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+
+        <h1 class="text-center">Toutes les séries de la table program : </h1>
+
+            {% for program in programs %}
+                <div>
+                    <h2>{{ loop.index }} / <a href="{{ path('wild_show', { 'slug': program.title }) }}">{{ program.title }}</a> - Catégorie : {{ program.category.name }}</h2>
+                    <p>{{ program.summary }}</p>
+                </div>
+            {% else %}
+                Aucune série trouvée.
+            {% endfor %}
+
+        <a href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
 {% endblock %}

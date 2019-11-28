@@ -2,7 +2,8 @@ body{
   background-image: url("../images/wallpaper.jpg");
   background-size: cover;
   font-family: $text-font;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: $main-color;
 } .block-main {
   margin-top: 15vh;
   } h1 {
@@ -10,6 +11,11 @@ body{
       font-size: 5rem;
       color: $second-main-color;
       text-shadow: 5px 5px 3px $second-additional-color;
+      }
+  .font-bg{
+    background-color: $second-additional-color;
+  } p {
+    font-weight: bold;
       }
 
 @keyframes hoverAnim {
@@ -33,10 +39,3 @@ body{
   background-color: $second-additional-color;
   z-index: 1;
 }
-
-@mixin animationButton {
-
-}
-
-
-
