@@ -7,9 +7,9 @@
     <div class="block-main">
         <h1 class="text-center">Liste des catégories:</h1>
         <div class="font-bg container">
-            <ul>
+            <ul class="list-group list-group-flush">
             {% for category in categories %}
-                <li class="d-flex justify-content-between">
+                <li class="d-flex justify-content-between list-group-item list-group-item-dark">
                     {{ category.name }} - <a href="{{ path('wild_show_category', { 'categoryName': category.name }) }}">Les trois derniers programmes</a>
                 </li>
             {% endfor %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episode{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Episode</h1>
+        <a href="{{ path('episode_edit', {'id': episode.id}) }}">Editer</a>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ episode.id }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ episode.title }}</td>
+                </tr>
+                <tr>
+                    <th>Numéro</th>
+                    <td>{{ episode.number }}</td>
+                </tr>
+                <tr>
+                    <th>Synopsis</th>
+                    <td>{{ episode.synopsis }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('episode_index') }}">Retour à la liste</a>
+
+        {{ include('episode/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -17,8 +17,15 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('category_index') }}"> Les Catégories </a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#"> Connexion </a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path("program_index") }}">Programmes</a>
+                    <a class="dropdown-item" href="{{ path("episode_index") }}">Episodes</a>
+                    <a class="dropdown-item" href="{{ path("season_index") }}">Saisons</a>
+                </div>
             </li>
             <li class="nav-item">
                 <img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion">

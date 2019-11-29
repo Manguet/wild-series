@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Saison index{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Saison index</h1>
+
+        <a href="{{ path('season_new') }}">Créer nouvelle saison</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Année</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for season in seasons %}
+                <tr>
+                    <td>{{ season.id }}</td>
+                    <td>{{ season.year }}</td>
+                    <td>{{ season.description }}</td>
+                    <td>
+                        <a href="{{ path('season_show', {'id': season.id}) }}">Visualiser</a>
+                        <a href="{{ path('season_edit', {'id': season.id}) }}">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Pas de saison trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

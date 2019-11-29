@@ -1,9 +1,8 @@
 body{
-  background-image: url("../images/wallpaper.jpg");
-  background-size: cover;
   font-family: $text-font;
   font-size: 1.3rem;
   color: $main-color;
+  background-color: $second-additional-color;
 } .block-main {
   margin-top: 15vh;
   } h1 {
@@ -12,11 +11,16 @@ body{
       color: $second-main-color;
       text-shadow: 5px 5px 3px $second-additional-color;
       }
-  .font-bg{
-    background-color: $second-additional-color;
-  } p {
+   p {
     font-weight: bold;
       }
+
+#homeblock {
+  background-image: url("../images/wallpaper.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
 
 @keyframes hoverAnim {
   0%   {text-shadow: 5px 5px 2px $second-main-color;}

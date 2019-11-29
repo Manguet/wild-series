@@ -2,16 +2,18 @@
 
 {% block body %}
     {% include "Base/navbar.html.twig" %}
-    <div class="block-main home d-flex align-items-center justify-content-center flex-column full-screen">
-        <h1>Bienvenue sur Wild Series!</h1>
-    </div>
-    <div id="fulldoors">
-        <div class="doors d-flex">
-            <div class="left-door" id="dleft"></div>
-            <div class="right-door" id="dright"></div>
+    <div id="homeblock">
+        <div class="block-main home d-flex align-items-center justify-content-center flex-column full-screen">
+            <h1>Bienvenue sur Wild Series!</h1>
         </div>
-        <div class="full-screen">
-            <button class="btn btn-danger is-close rounded-pill shadow-none" id="entry"> {{ name }} </button>
-        </div>
+        <div id="fulldoors">
+            <div class="doors d-flex">
+                <div class="left-door" id="dleft"></div>
+                <div class="right-door" id="dright"></div>
+            </div>
+            <div class="full-screen">
+                <button class="btn btn-danger is-close rounded-pill shadow-none" id="entry"> {{ name }} </button>
+            </div>
+       </div>
     </div>
 {% endblock %}

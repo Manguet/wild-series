@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Episode{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Creéer un épisode</h1>
+
+        <div class="form-group">
+            {{ include('episode/_form.html.twig') }}
+        </div>
+        <a href="{{ path('episode_index') }}">back to list</a>
+    </div>
+{% endblock %}

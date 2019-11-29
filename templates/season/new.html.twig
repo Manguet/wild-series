@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Saison{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Créer nouvelle Saison</h1>
+
+        {{ include('season/_form.html.twig') }}
+
+        <a href="{{ path('season_index') }}">Retour à la liste</a>
+    </div>
+{% endblock %}

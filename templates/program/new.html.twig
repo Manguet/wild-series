@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau programme{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Créer un programme</h1>
+
+        {{ include('program/_form.html.twig') }}
+
+        <a href="{{ path('program_index') }}">Retour à la liste</a>
+    </div>
+{% endblock %}

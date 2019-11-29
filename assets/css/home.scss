@@ -6,11 +6,13 @@
   top: 0;
 } .left-door {
   background-image: url("../images/left.png");
+  background-size: cover;
   @include animationDoors;
   }
   .right-door {
     background-image: url("../images/right.png");
     @include animationDoors;
+    background-size: cover;
   }
 
 .full-screen {
