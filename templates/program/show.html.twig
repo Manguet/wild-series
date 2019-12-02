@@ -32,5 +32,14 @@
         <a href="{{ path('program_index') }}">retour à la liste</a>
 
         {{ include('program/_delete_form.html.twig') }}
+
+        <strong>Acteurs :</strong>
+        <ul>
+            {% for actor in program.actors %}
+                <li>{{ actor.name }} </li>
+            {% else %}
+                <li>Aucun acteur pour cette série</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

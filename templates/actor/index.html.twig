@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acteurs{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1 class="text-center">Liste des Acteurs </h1>
+
+        {% for actor in actors %}
+            <div>
+                <h2>{{ loop.index }} / <a href="{{ path('actor_show', { 'actorName': actor.name }) }}"> {{ actor.name }} </a></h2>
+            </div>
+        {% else %}
+            Aucun acteur trouvé.
+        {% endfor %}
+
+        <a href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+{% endblock %}

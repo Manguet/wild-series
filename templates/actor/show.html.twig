@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acteurs{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+
+    <div class="block-main">
+        <h1 class="text-center">{{ actor.name }}</h1>
+        <p>{{ actor.name }} apparait dans les séries suivantes:</p>
+
+        <ul>
+        {% for program in programs %}
+            <li>{{ program.title }}</li>
+        {% else %}
+            Aucune des séries.
+        {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
