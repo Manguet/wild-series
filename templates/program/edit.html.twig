@@ -5,12 +5,13 @@
 {% block body %}
     {% include "Base/navbar.html.twig" %}
     <div class="block-main">
-        <h1>Editer le programme</h1>
+        <h1 class="text-center">Editer le programme</h1>
+        <div class="container">
+            {{ include('program/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-        {{ include('program/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+            <a href="{{ path('program_index') }}">Retour à la liste</a>
 
-        <a href="{{ path('program_index') }}">Retour à la liste</a>
-
-        {{ include('program/_delete_form.html.twig') }}
+            {{ include('program/_delete_form.html.twig') }}
+        </div>
     </div>
 {% endblock %}
