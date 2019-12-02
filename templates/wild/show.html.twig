@@ -17,6 +17,11 @@
         {% else %}
                 <p>Aucun Program correspondant à votre recherche</p>
         {% endif %}
+                <p>Acteurs:</p>
+                {% for actor in actors %}
+                    <a href="{{ path('actor_show', { 'actorName': actor.name }) }}">{{ actor.name }}</a>
+                    <br>
+                {% endfor %}
         </div>
     </div>
 

@@ -104,6 +104,8 @@ class WildController extends AbstractController
             );
         }
 
+        $actors = $program->getActors();
+
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
             ->findBy([
@@ -114,6 +116,7 @@ class WildController extends AbstractController
             'program' => $program,
             'slug'    => $slug,
             'seasons' => $seasons,
+            'actors'  => $actors,
         ]);
     }
 
