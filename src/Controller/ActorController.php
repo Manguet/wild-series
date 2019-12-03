@@ -29,14 +29,14 @@ class ActorController extends AbstractController
 
     /**
      * @param string $actorName
-     * @Route("/{actorName<^[ a-zA-Z0-9-é]+$>}", defaults={"actorName" = null}, name="show")
+     * @Route("/{actorName}", defaults={"actorName" = null}, name="show")
      * @return Response
      */
     public function showActor(string $actorName):Response
     {
         if (!$actorName) {
             throw $this
-                ->createNotFoundException('No acotr has been sent to find a program in actor\'s table.');
+                ->createNotFoundException('No actor has been sent to find a program in actor\'s table.');
         }
         $actorName = preg_replace(
             '/-/',
@@ -50,7 +50,6 @@ class ActorController extends AbstractController
             ]);
 
         $programs = $actor->getPrograms();
-
 
         return $this->render('actor/show.html.twig', [
             'actor'    => $actor,

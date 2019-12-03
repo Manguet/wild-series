@@ -57,10 +57,13 @@ class WildController extends AbstractController
                     'program' => $program,
                 ]);
 
+            $actors = $program->getActors();
+
             return $this->render(
                 'wild/show.html.twig', [
                     'program' => $program,
                     'seasons' => $seasons,
+                    'actors'  => $actors,
                 ]
             );
         }

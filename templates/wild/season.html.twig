@@ -5,13 +5,13 @@
     {% include "Base/navbar.html.twig" %}
 
     <div class="block-main text-center">
-        <h1>Saison {{ season.id }} de {{ program.title }} </h1>
+        <h1>Saison  de {{ program.title }} </h1>
         <p>{{ season.description }}</p>
         <div class="container">
             <p>Liste des épisodes:</p>
             <ul>
                 {% for episode in episodes  %}
-                    <li><a href="{{ path('wild_episode', {'id' : episode.id}) }}">Episode {{ episode.number }}: {{ episode.title }}</a></li>
+                    <li><a href="{{ path('wild_episode', {'id' : episode.id}) }}">Episode {{ loop.index }}: {{ episode.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
