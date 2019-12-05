@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor index{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+    <div class="block-main">
+        <h1>Acteurs</h1>
+
+        <a href="{{ path('actor_new') }}">Créer un acteur</a>
+        <hr>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for actor in actors %}
+                <tr>
+                    <td>{{ actor.id }}</td>
+                    <td>{{ actor.name }}</td>
+                    <td>
+                        <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun acteur</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

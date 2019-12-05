@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Service\Slugify;
 use Faker;
 use App\Entity\Episode;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -24,6 +25,10 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
             $episode->setSynopsis($synopsis);
 
             $episode->setSeason($this->getReference("season_" . rand(1,49)));
+            $slugify = new Slugify();
+            $slug = $slugify->generate($episode->getTitle());
+            $episode->setSlug($slug);
+
             $manager->persist($episode);
         }
         $manager->flush();

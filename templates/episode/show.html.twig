@@ -6,7 +6,7 @@
     {% include "Base/navbar.html.twig" %}
     <div class="block-main">
         <h1>Episode</h1>
-        <a href="{{ path('episode_edit', {'id': episode.id}) }}">Editer</a>
+        <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">Editer</a>
 
         <table class="table">
             <tbody>
