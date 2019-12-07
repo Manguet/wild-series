@@ -1,0 +1,12 @@
+{% extends 'program/email/layout.html.twig' %}
+
+{% block body %}
+    <h1>Ajout d'une nouvelle série !</h1>
+
+    <p>Envoyé par : {{ name }}</p>
+    <p>Titre de la série: {{ program.title }}</p>
+
+
+    <a href="{{ url('program_show', {'slug': program.slug} )  }}">lien vers la série</a>
+
+{% endblock %}
