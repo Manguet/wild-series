@@ -10,6 +10,7 @@ use App\Entity\Season;
 use App\Entity\User;
 use App\Form\CommentType;
 use App\Form\ProgramSearchType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -248,5 +249,22 @@ class WildController extends AbstractController
             'comment' => $comment,
             'form'    => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/deleteComment/{id}", name="delete", methods={"DELETE", "GET"})
+     * @param EntityManagerInterface $entityManager
+     * @param int $id
+     * @return Response
+     */
+    public function delete(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $comment = $this->getDoctrine()->getRepository(Comment::class)->find($id);
+        $episode= $comment->getEpisode();
+        $episodeId = $episode->getId();
+        $entityManager->remove($comment);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('wild_episode', ['id' => $episodeId]);
     }
 }

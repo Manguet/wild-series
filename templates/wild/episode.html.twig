@@ -13,6 +13,12 @@
             <p>Commentaire {{ loop.index }} : {{ comment.comment }}</p>
             <p>Note : {{ comment.rate }}</p>
             <p>Commentaire de : {{ comment.user.email }}</p>
+
+            {% if is_granted("ROLE_SUBSCRIBERAUTHOR") and app.user%}
+                <a href="{{ path('wild_delete', {'id' : comment.id}) }}">Supprimer le commentaire</a>
+            {%endif%}
+
+            <hr>
             <br/>
         {% endfor %}
 

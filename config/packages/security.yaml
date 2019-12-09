@@ -34,6 +34,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/program, roles: ROLE_SUBSCRIBERAUTHOR }
+        - { path: ^/actor, roles: ROLE_SUBSCRIBERAUTHOR }
+        - { path: ^/episode, roles: ROLE_SUBSCRIBERAUTHOR }
+        - { path: ^/season, roles: ROLE_SUBSCRIBERAUTHOR }
 
     role_hierarchy:
         ROLE_SUBSCRIBERAUTHOR: ROLE_USER
