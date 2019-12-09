@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    {% include "Base/navbar.html.twig" %}
+
+    <div class="block-main">
+        <h1 class="text-center">{{ app.user.email }}</h1>
+        <p> Mon adresse mail: {{ app.user.email }}</p>
+        <p> Mon mot de passe : ****** </p>
+    </div>
+{% endblock %}

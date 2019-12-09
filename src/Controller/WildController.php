@@ -267,4 +267,13 @@ class WildController extends AbstractController
 
         return $this->redirectToRoute('wild_episode', ['id' => $episodeId]);
     }
+
+    /**
+     * @Route("/my-profil", name="my_profil")
+     * @return Response
+     */
+    public function profilUser(): Response
+    {
+        return $this->render('security/profil.html.twig');
+    }
 }

@@ -20,24 +20,30 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('actor_index') }}"> Les Acteurs </a>
             </li>
-            {% if app.user %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path("program_index") }}">Programmes</a>
-                    <a class="dropdown-item" href="{{ path("episode_index") }}">Episodes</a>
-                    <a class="dropdown-item" href="{{ path("season_index") }}">Saisons</a>
-                    <a class="dropdown-item" href="{{ path("actor_all") }}">Acteurs</a>
-                </div>
-            </li>
+            {% if is_granted("ROLE_ADMIN")%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path("program_index") }}">Programmes</a>
+                        <a class="dropdown-item" href="{{ path("episode_index") }}">Episodes</a>
+                        <a class="dropdown-item" href="{{ path("season_index") }}">Saisons</a>
+                        <a class="dropdown-item" href="{{ path("actor_all") }}">Acteurs</a>
+                    </div>
+                </li>
             {% endif %}
             <li class="nav-item">
                 {% if app.user %}
-                    <a href="{{ path('app_logout') }}"> Se déconnecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('wild_my_profil')}}" class="nav-link">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_logout') }}" class="nav-link"> Se déconnecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                </li>
                 {% else %}
-                    <a href="{{ path('app_login') }}"> Se connecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                    <a href="{{ path('app_login') }}" class="nav-link"> Se connecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
                 {% endif %}
 
             </li>
