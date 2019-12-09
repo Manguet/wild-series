@@ -20,6 +20,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('actor_index') }}"> Les Acteurs </a>
             </li>
+            {% if app.user %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin
@@ -31,8 +32,14 @@
                     <a class="dropdown-item" href="{{ path("actor_all") }}">Acteurs</a>
                 </div>
             </li>
+            {% endif %}
             <li class="nav-item">
-                <img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion">
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}"> Se déconnecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"> Se connecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                {% endif %}
+
             </li>
         </ul>
     </div>

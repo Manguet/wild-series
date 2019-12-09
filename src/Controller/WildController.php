@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Entity\User;
+use App\Form\CommentType;
 use App\Form\ProgramSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -205,12 +208,45 @@ class WildController extends AbstractController
      */
     public function showEpisode(Episode $episode): Response
     {
-        $season = $episode->getSeason();
-        $program = $season->getProgram();
+        $comments = $episode->getComments();
+        $season   = $episode->getSeason();
+        $program  = $season->getProgram();
+
         return $this->render('wild/episode.html.twig', [
-            'episode' => $episode,
-            'season' => $season,
-            'program' => $program,
+            'episode'  => $episode,
+            'season'   => $season,
+            'program'  => $program,
+            'comments' => $comments,
+        ]);
+    }
+
+    /**
+     * @Route("/comment/{id}", name="comment", methods={"GET","POST"})
+     * @param Request $request
+     * @param int $id
+     * @return Response
+     */
+    public function newComment(Request $request, int $id): Response
+    {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $author = $this->getUser();
+            $comment->setUser($author);
+            $episode = $this->getDoctrine()->getRepository(Episode::class)->find($id);
+            $comment->setEpisode($episode);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('wild_episode', ['id' => $id]);
+        }
+
+        return $this->render('wild/Form/CommentForm.html.twig', [
+            'comment' => $comment,
+            'form'    => $form->createView(),
         ]);
     }
 }

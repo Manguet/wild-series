@@ -9,11 +9,21 @@
         <p>Episode {{ episode.number }}: {{ episode.title }}</p>
         <p>Saison {{ season.id }}: {{ season.year }}</p>
         <p>{{ episode.synopsis }}</p>
+        {% for comment in comments %}
+            <p>Commentaire {{ loop.index }} : {{ comment.comment }}</p>
+            <p>Note : {{ comment.rate }}</p>
+            <p>Commentaire de : {{ comment.user.email }}</p>
+            <br/>
+        {% endfor %}
+
+        {% if app.user %}
+            <a href="{{ path('wild_comment', {'id' : episode.id}) }}"> Laisser un Commentaire </a>
+            <br/>
+        {% endif %}
+
+        <a href="{{ path('wild_season', {'id' : season.id}) }}">
+            Retour aux détails
+        </a>
     </div>
-
-
-    <a href="{{ path('wild_season', {'id' : season.id}) }}">
-        Retour aux détails
-    </a>
 
 {% endblock %}
