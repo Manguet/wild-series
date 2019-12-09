@@ -246,7 +246,6 @@ class WildController extends AbstractController
         }
 
         return $this->render('wild/Form/CommentForm.html.twig', [
-            'comment' => $comment,
             'form'    => $form->createView(),
         ]);
     }
