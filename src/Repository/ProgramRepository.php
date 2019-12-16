@@ -33,7 +33,7 @@ class ProgramRepository extends ServiceEntityRepository
     public function findAllActorsInProgram()
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            -> innerJoin('p.actors', 'a')
+            -> leftJoin('p.actors', 'a')
             -> innerJoin('p.category', 'c')
             -> addSelect('p', 'a', 'c')
             -> getQuery();
