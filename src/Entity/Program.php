@@ -34,11 +34,6 @@ class Program
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Merci de remplir ce champs")
-     * @Assert\Regex(
-     *     pattern="(\plus \belle \la \vie/)",
-     *     htmlPattern="(plus \belle \la \vie/)",
-     *     message="On parle de vrais séries ici"
-     * )
      */
     private $summary;
 
