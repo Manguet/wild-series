@@ -21,5 +21,3 @@ document.getElementById("entry").onclick = function () {
     document.getElementById("entry").classList.toggle("disapear");
     document.getElementById("fulldoors").classList.toggle("byebye")
 };
-
-
