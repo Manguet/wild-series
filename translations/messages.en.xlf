@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LPJNul_" resname="hello">
+        <source>hello</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="CXmLOF4" resname="account.registration">
+        <source>account.registration</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="E_t5j6Q" resname="account.login">
+        <source>account.login</source>
+        <target>Sign Up</target>
+      </trans-unit>
+      <trans-unit id="CDjx2ju" resname="hello_username">
+        <source>hello_username</source>
+        <target>Hello %username%</target>
+      </trans-unit>
+      <trans-unit id="Q7UTU9q" resname="account.logout">
+        <source>account.logout</source>
+        <target>Log Out</target>
+      </trans-unit>
+      <trans-unit id="6PiQROf" resname="welcome.wild">
+        <source>welcome.wild</source>
+        <target>Welcome to Wild Series</target>
+      </trans-unit>
+      <trans-unit id="vhRwoXB" resname="langue.drop">
+        <source>langue.drop</source>
+        <target>Languages</target>
+      </trans-unit>
+      <trans-unit id="MByTMtE" resname="programs.nav">
+        <source>programs.nav</source>
+        <target>Programs</target>
+      </trans-unit>
+      <trans-unit id="NdNqQ5a" resname="categories.nav">
+        <source>categories.nav</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="4WE0fbY" resname="actors.nav">
+        <source>actors.nav</source>
+        <target>Actors</target>
+      </trans-unit>
+      <trans-unit id="A2G0U.c" resname="program.drop">
+        <source>program.drop</source>
+        <target>Programs</target>
+      </trans-unit>
+      <trans-unit id="Zd40hdx" resname="episode.drop">
+        <source>episode.drop</source>
+        <target>Episodes</target>
+      </trans-unit>
+      <trans-unit id="3cs0zCH" resname="season.drop">
+        <source>season.drop</source>
+        <target>Seasons</target>
+      </trans-unit>
+      <trans-unit id="SgQE3wn" resname="actor.drop">
+        <source>actor.drop</source>
+        <target>Actors</target>
+      </trans-unit>
+      <trans-unit id="oehMN.Z" resname="profil">
+        <source>profil</source>
+        <target>Profile</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

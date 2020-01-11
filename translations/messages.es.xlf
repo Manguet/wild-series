@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="es" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="6PiQROf" resname="welcome.wild">
+        <source>welcome.wild</source>
+        <target>Bienvenido a Wild Series</target>
+      </trans-unit>
+      <trans-unit id="vhRwoXB" resname="langue.drop">
+        <source>langue.drop</source>
+        <target>Idiomas</target>
+      </trans-unit>
+      <trans-unit id="MByTMtE" resname="programs.nav">
+        <source>programs.nav</source>
+        <target>Serie</target>
+      </trans-unit>
+      <trans-unit id="NdNqQ5a" resname="categories.nav">
+        <source>categories.nav</source>
+        <target>Categorías</target>
+      </trans-unit>
+      <trans-unit id="4WE0fbY" resname="actors.nav">
+        <source>actors.nav</source>
+        <target>Fundido</target>
+      </trans-unit>
+      <trans-unit id="A2G0U.c" resname="program.drop">
+        <source>program.drop</source>
+        <target>Serie</target>
+      </trans-unit>
+      <trans-unit id="Zd40hdx" resname="episode.drop">
+        <source>episode.drop</source>
+        <target>Episodios</target>
+      </trans-unit>
+      <trans-unit id="3cs0zCH" resname="season.drop">
+        <source>season.drop</source>
+        <target>Temporadas</target>
+      </trans-unit>
+      <trans-unit id="SgQE3wn" resname="actor.drop">
+        <source>actor.drop</source>
+        <target>Fundido</target>
+      </trans-unit>
+      <trans-unit id="oehMN.Z" resname="profil">
+        <source>profil</source>
+        <target>Perfil</target>
+      </trans-unit>
+      <trans-unit id="Q7UTU9q" resname="account.logout">
+        <source>account.logout</source>
+        <target>Finalizar</target>
+      </trans-unit>
+      <trans-unit id="E_t5j6Q" resname="account.login">
+        <source>account.login</source>
+        <target>Acceder</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

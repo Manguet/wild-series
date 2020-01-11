@@ -11,14 +11,25 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path('wild_index') }}"> Les Séries </a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ 'langue.drop'|trans }}
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDrop">
+                    <a class="dropdown-item" href="{{ path(app.request.get('_route'), ({'_locale': 'fr' })) }}">Français</a>
+                    <a class="dropdown-item" href="{{ path(app.request.get('_route'), ({'_locale': 'en' })) }}">English</a>
+                    <a class="dropdown-item" href="{{ path(app.request.get('_route'), ({'_locale': 'es' })) }}">Spainish</a>
+                </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('category_index') }}"> Les Catégories </a>
+                <a class="nav-link" href="{{ path('wild_index') }}"> {{ 'programs.nav'|trans }} </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('actor_index') }}"> Les Acteurs </a>
+                <a class="nav-link" href="{{ path('category_index') }}"> {{ 'categories.nav'|trans }} </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('actor_index') }}"> {{ 'actors.nav'|trans }} </a>
             </li>
             {% if is_granted("ROLE_ADMIN")%}
                 <li class="nav-item dropdown">
@@ -26,10 +37,10 @@
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path("program_index") }}">Programmes</a>
-                        <a class="dropdown-item" href="{{ path("episode_index") }}">Episodes</a>
-                        <a class="dropdown-item" href="{{ path("season_index") }}">Saisons</a>
-                        <a class="dropdown-item" href="{{ path("actor_all") }}">Acteurs</a>
+                        <a class="dropdown-item" href="{{ path("program_index") }}">{{ 'program.drop'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path("episode_index") }}">{{ 'episode.drop'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path("season_index") }}">{{ 'season.drop'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path("actor_all") }}">{{ 'actor.drop'|trans }}</a>
                     </div>
                 </li>
             {% endif %}
@@ -37,16 +48,14 @@
                 {% if app.user %}
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('wild_my_profil')}}" class="nav-link">Profil</a>
+                    <a href="{{ path('wild_my_profil')}}" class="nav-link">{{ 'profil'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('app_logout') }}" class="nav-link"> Se déconnecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                    <a href="{{ path('app_logout') }}" class="nav-link"> {{ 'account.logout'|trans }}<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
                 </li>
                 {% else %}
-                    <a href="{{ path('app_login') }}" class="nav-link"> Se connecter<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
+                    <a href="{{ path('app_login') }}" class="nav-link"> {{ 'account.login'|trans }}<img src="{{ asset('build/images/connexion.png') }}" class="logo-nav mr-4 ml-4" alt="logo connexion"></a>
                 {% endif %}
-
-            </li>
         </ul>
     </div>
 </nav>
